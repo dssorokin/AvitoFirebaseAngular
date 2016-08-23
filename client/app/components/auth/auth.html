@@ -1,0 +1,35 @@
+<div class="col-md-6 col-md-offset-3">
+  <h2 ng-bind="$ctrl.formTitle"></h2>
+ <form name="authForm" ng-submit="$ctrl.submitAction()">
+   <ng-transclude></ng-transclude>
+   <div class="form-group">
+     <label for="email">Email address</label>
+     <input type="text"
+            id="email"
+            name="email"
+            class="form-control"
+            ng-model="$ctrl.user.email"
+            placeholder="Email"
+            required>
+   </div>
+   <div ng-show="authForm.$submitted">
+     <p ng-show="authForm.email.$error.required" class="text-danger">Email required</p>
+     <p ng-show="authForm.email.$error.email" class="text-danger">Please enter a valid email.</p>
+   </div>
+
+   <div class="form-group">
+     <label for="password">Password</label>
+    <input type="password"
+           id="password"
+           class="form-control"
+           ng-model="$ctrl.user.password"
+           placeholder="Password"
+           required>
+   </div>
+   <div class="text-danger" ng-show="$ctrl.errors" ng-bind="$ctrl.errors"></div>
+     <button class="btn btn-default" ng-bind="$ctrl.formTitle" type="submit"></button>
+   <!--<div class="help-block" >-->
+     <!--<p ng-message="required">This field is required</p>-->
+   <!--</div>-->
+  </form>
+</div>

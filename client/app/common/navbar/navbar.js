@@ -6,8 +6,15 @@ let navbarModule = angular.module('navbar', [
   uiRouter
 ])
 
-.component('navbar', navbarComponent)
-  
-.name;
+  .component('navbar', navbarComponent)
+
+  .run()
+  .name;
+// function runFunction($location, authService) {
+//   "ngInject";
+//   authService.firebaseAuthObject.$onAuthStateChanged(function (authData) {
+//     console.log(authData);
+//   });
+// }
 
 export default navbarModule;

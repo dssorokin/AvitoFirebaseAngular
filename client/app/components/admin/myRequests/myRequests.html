@@ -1,0 +1,23 @@
+<h2 class="text-center">Отправленные заявки</h2>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>От кого заявка</th>
+    <th>Email отправителя</th>
+    <th>Товар на который была получена заявка</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="myRequest in $ctrl.myRequests">
+    <td>{{ $index + 1 }}</td>
+    <td>{{ myRequest.senderUsername }}</td>
+    <td>{{ myRequest.senderEmail }}</td>
+    <td><a ui-sref="singleProduct({id: myRequest.productId})">Ссылка на ваш товар</a></td>
+  </tr>
+  </tbody>
+</table>
+<p class="text-info"
+   ng-if="!$ctrl.myRequests.length">Вы не отправляли заявок</p>
+
+

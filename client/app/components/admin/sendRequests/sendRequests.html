@@ -1,0 +1,18 @@
+<h2 class="text-center">Отправленные заявки</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Ссылка</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="sendRequest in $ctrl.sendRequests">
+      <td>{{ $index + 1 }}</td>
+      <td><a ui-sref="singleProduct({id: sendRequest.productId})">Ссылка на ваш товар</a></td>
+    </tr>
+  </tbody>
+</table>
+<p class="text-info"
+   ng-if="!$ctrl.sendRequests.length">Вы не отправляли заявок</p>
+

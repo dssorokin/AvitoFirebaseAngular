@@ -1,9 +1,30 @@
-<navbar></navbar>
-<header>
-  <hero></hero>
-</header>
 <main>
-  <div>
-    <h1>Found in {{ $ctrl.name }}.html</h1>
+  <show-during-resolve></show-during-resolve>
+  <div class="col-md-3" ng-repeat="product in $ctrl.products">
+    <div class="product-card">
+      <div class="product-card__img">
+        <img ng-src="{{product.photo}}" class="img-responsive" alt="">
+      </div>
+      <div class="product-card__description">
+        <h3 class="product-card__title">
+          {{product.title}}
+        </h3>
+        <ul>
+          <li class="product-card__user">
+            <i class="glyphicon glyphicon-user"></i>
+            {{product.user}}
+          </li>
+          <li class="product-card__category">
+            <i class="glyphicon glyphicon-filter"></i>
+            {{product.category}}
+          </li>
+          <li class="product-card__price">
+            <i class="glyphicon glyphicon-ruble"></i>
+            {{product.price}}
+          </li>
+        </ul>
+      </div>
+      <a ui-sref="singleProduct({id: product.$id})">Узнать о товаре больше</a>
+    </div>
   </div>
 </main>

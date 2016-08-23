@@ -1,12 +1,16 @@
 import angular from 'angular';
 import Home from './home/home';
-import About from './about/about';
+import Auth from './auth/auth';
+import Admin from './admin/admin';
+import singleProduct from './singleProduct/singleProduct';
 
 let componentModule = angular.module('app.components', [
   Home,
-  About
+  Auth,
+  Admin,
+  singleProduct
 ])
-  
+
 .name;
 
 export default componentModule;

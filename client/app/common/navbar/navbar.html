@@ -1,8 +1,14 @@
-<nav class="navbar">
-  <div class="logo">
-    <h1><a ui-sref="home">{{ $ctrl.name }}</a></h1>
-  </div>
-  <div class="nav-links">
-    <span><a ui-sref="about">about</a></span>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="logo">
+      <a class="navbar-brand" ui-sref="home">Brand</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a ng-show="!$ctrl.isLoggedIn()" ui-sref="register">Register</a></li>
+      <li><a ng-show="!$ctrl.isLoggedIn()" ui-sref="login">Login</a></li>
+      <li><a href="" ng-show="$ctrl.isLoggedIn()" ng-click="$ctrl.logout()">Log out</a></li>
+      <li><a ng-show="$ctrl.user">Hello {{$ctrl.user.username}}</a> </li>
+      <li><a ng-show="$ctrl.isLoggedIn()" ui-sref="admin.main">Admin</a></li>
+    </ul>
   </div>
 </nav>

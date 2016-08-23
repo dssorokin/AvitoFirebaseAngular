@@ -1,0 +1,35 @@
+<div class="product-page pull-left">
+  <div class="product-page__img">
+    <img ng-src="{{$ctrl.product.photo}}" class="img-responsive" alt="">
+  </div>
+  <div class="jumbotron">
+    <h2 class="product-page__title" ng-bind="$ctrl.product.title"></h2>
+    <p class="product-page__description" ng-bind="$ctrl.product.description"></p>
+    <p>
+      <i class="glyphicon glyphicon-user"></i>
+      {{$ctrl.product.user}}
+    </p>
+    <p>
+      <i class="glyphicon glyphicon-filter"></i>
+      {{$ctrl.product.category}}
+    </p>
+    <p>
+      <i class="glyphicon glyphicon-ruble"></i>
+      {{$ctrl.product.price}}
+
+    </p>
+    <div>
+      <button class="btn btn-primary btn-lg" ng-click="$ctrl.makeRequest()">Оставить заявку на товар!</button>
+      <p class="text-danger" ng-show="$ctrl.showError">Вы не можете подать заявку на свой же товар!</p>
+    </div>
+  </div>
+</div>
+
+<div class="pull-right right-side">
+  <comment-box is-logged-in="$ctrl.isUserLoggedIn()"
+               redirect-to-register="$ctrl.redirectToRegister()"
+               product-id="$ctrl.productId"
+               comments="$ctrl.comments"></comment-box>
+</div>
+
+

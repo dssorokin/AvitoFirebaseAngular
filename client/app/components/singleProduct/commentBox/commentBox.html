@@ -1,0 +1,25 @@
+<div class="comment-box">
+  <div class="comment-box__input">
+    <textarea text-comment-directive
+              ng-show="$ctrl.isLoggedIn()"
+              ng-model="$ctrl.text"
+              class="form-control"
+              cols="30"
+              rows="5">
+    </textarea>
+    <p ng-show="$ctrl.sendError" class="text-danger">Нельзя отправить пустой комментарий!</p>
+    <button ng-show="!$ctrl.isLoggedIn()" ng-click="$ctrl.redirectToRegister()" class="btn btn-primary">Зарегистрироваться</button>
+    <button ng-show="$ctrl.isLoggedIn()" ng-click="$ctrl.sendComment()" class="btn btn-primary pull-right">Оставить комментарий</button>
+  </div>
+  <div class="comment-box__comments comments">
+    <div class="comments__item" ng-repeat="comment in $ctrl.comments">
+      <div class="comments__name pull-left">
+        <i class="user-icon glyphicon glyphicon-user"></i>
+        <p>{{ comment.userInfo.username }}</p>
+      </div>
+      <div class="comments__text">
+        <p>{{ comment.text }}</p>
+      </div>
+    </div>
+  </div>
+</div>

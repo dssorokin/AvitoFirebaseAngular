@@ -1,54 +1,50 @@
-import HomeModule from './home'
+import HomeController from './home.controller';
+
 
 describe('Home', () => {
-  let $rootScope, $state, $location, $componentController, $compile;
+  let ctrl;
+  let productService, productServiceMock;
 
-  beforeEach(window.module(HomeModule));
+  beforeEach(() => {
+    productService = {
+      createProduct: (product) =>{},
+      getProductsByUser: () => {},
+      getAll: () => {},
+      getProductById: () => {},
+      changeUidOnUsername: () => {},
+      getProductsId: () => {}
+    };
+    productServiceMock = sinon.mock(productService);
+    ctrl = new HomeController(productService);
+  });
+  var $rootScope;
 
   beforeEach(inject(($injector) => {
     $rootScope = $injector.get('$rootScope');
-    $componentController = $injector.get('$componentController');
-    $state = $injector.get('$state');
-    $location = $injector.get('$location');
-    $compile = $injector.get('$compile');
   }));
 
-  describe('Module', () => {
-    // top-level specs: i.e., routes, injection, naming
-    it('default component should be home', () => {
-      $location.url('/');
-      $rootScope.$digest();
-      expect($state.current.component).to.eq('home');
-    });
+  it('controller has name propery', () => {
+    expect(ctrl.name).to.be.equal('home');
   });
 
-  describe('Controller', () => {
-    // controller specs
-    let controller;
-    beforeEach(() => {
-      controller = $componentController('home', {
-        $scope: $rootScope.$new()
-      });
-    });
-
-    it('has a name property', () => { // erase if removing this.name from the controller
-      expect(controller).to.have.property('name');
-    });
+  it('controller has name propery', () => {
+    expect(ctrl).to.exist;
   });
 
-  describe('View', () => {
-    // view layer specs.
-    let scope, template;
-
-    beforeEach(() => {
-      scope = $rootScope.$new();
-      template = $compile('<home></home>')(scope);
-      scope.$apply();
-    });
-
-    it('has name in template', () => {
-      expect(template.find('h1').html()).to.eq('Found in home.html');
-    });
-
+  it('should have products', () => {
+    $rootScope.$apply();
+    expect(ctrl.products).to.exist;
   });
+
+
+  // describe('Module', () => {
+  //   // top-level specs: i.e., routes, injection, naming
+  //   it('default component should be home', () => {
+  //     $location.url('/');
+  //     $rootScope.$digest();
+  //     expect($state.current.component).to.eq('home');
+  //   });
+  // });
+
+
 });

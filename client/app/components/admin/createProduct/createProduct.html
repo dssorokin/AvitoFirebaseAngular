@@ -1,0 +1,70 @@
+<div>
+  <form name="createProductForm"
+        ng-submit="createProductForm.$valid && $ctrl.create()"
+        novalidate>
+    <div class="form-group">
+      <label for="title">Название товара</label>
+      <input class="form-control"
+             id="title"
+             type="text"
+             ng-model="$ctrl.product.title"
+             name="title"
+             required>
+      <div class="help-block" ng-messages="createProductForm.title.$error"
+           ng-if="createProductForm.title.$touched">
+        <p ng-message="required" class="text-danger">Title of product is required.</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="descr">Описание товара</label>
+      <textarea id="descr"
+                class="form-control"
+                rows="10"
+                ng-model="$ctrl.product.description"
+                name="descr"></textarea>
+      <div class="help-block" ng-messages="createProductForm.descr.$error"
+           ng-if="createProductForm.descr.$touched">
+        <p ng-message="required" class="text-danger">Description of product is required.</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="price">Цена товара</label>
+      <input id="price"
+             type="text"
+             class="form-control"
+             ng-model="$ctrl.product.price"
+             currency-directive
+             name="price">
+      <div class="help-block" ng-messages="createProductForm.price.$error">
+        <p ng-message="formatPrice" class="text-danger">The wrong format of price!</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="category">Категория</label>
+      <select id="category"
+              class="form-control"
+              ng-model="$ctrl.product.category"
+              name="category"
+              required>
+        <option value="IT">IT</option>
+        <option value="Food">Food</option>
+        <option value="Tech">Tech</option>
+        <option value="Toys">Toys</option>
+        <option value="Games">Games</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputFile">Вставте фото товара</label>
+      <input type="file"
+             ngf-select
+             ng-model="$ctrl.product.photo"
+             name="photo"
+             id="exampleInputFile"
+             required>
+      <div class="help-block" ng-messages="createProductForm.photo.$error">
+        <p ng-message="required" class="text-danger">You should attach photo!</p>
+      </div>
+    </div>
+    <button class="btn btn-default" ng-disabled="!createProductForm.$valid">Cоздать продукт</button>
+  </form>
+</div>

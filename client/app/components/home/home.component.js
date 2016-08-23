@@ -4,7 +4,9 @@ import './home.styl';
 
 let homeComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+    products: '<'
+  },
   template,
   controller
 };
