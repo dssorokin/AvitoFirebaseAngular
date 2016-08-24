@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "users": {
+      ".read": true,
+      ".write": true
+    },
+    "products": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "comments": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "requests": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+}
